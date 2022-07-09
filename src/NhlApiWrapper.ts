@@ -6,7 +6,6 @@ interface QueryParams<T> {
     where?: {
         [k in keyof T]: T[k]
     },
-    all?: boolean,
     first?: boolean,
     last?: boolean
 }
@@ -19,10 +18,6 @@ const doQuery = <T> (params: QueryParams<T>, data: Array<T>): T | Array<T> => {
     if (params.last) {
         return data[data.length - 1];
     }
-
-    if (params.all) {
-        return data;
-    } 
 
     if (params.where) {
         // TODO: check keys/values length are divisble by 2 / same length
