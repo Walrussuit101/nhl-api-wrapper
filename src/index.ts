@@ -3,7 +3,7 @@ import ApiBaseUrl from './ApiBaseUrl';
 
 NhlApiWrapper.franchise({
     where: {
-        link: 'lol'
+        teamName: "Penguins"
     }
 }).then(data => {
     console.log(data);
