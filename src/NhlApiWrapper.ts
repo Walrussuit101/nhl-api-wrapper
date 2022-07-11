@@ -1,10 +1,12 @@
 import axios from 'axios';
 import { ZodType } from 'zod';
 
-import { Franchise, FranchiseShape } from './models/Franchise';
-import { Conference, ConferenceShape } from './models/Conference';
 import { doQuery, QueryParams } from './models/Query';
 import ApiBaseUrl from './ApiBaseUrl';
+
+import { Franchise, FranchiseShape } from './models/Franchise';
+import { Conference, ConferenceShape } from './models/Conference';
+import { Venue, VenueShape } from './models/Venue';
 
 const buildGetEntityFunction = <T> (validator: ZodType, urlEntityName: string) => {
     return async <K extends T> (queryParams?: QueryParams<K>): Promise<K[] | K> => {
@@ -23,7 +25,8 @@ const buildGetEntityFunction = <T> (validator: ZodType, urlEntityName: string) =
 
 const NhlApiWrapper = {
     franchise: buildGetEntityFunction<Franchise>(FranchiseShape, 'franchises'),
-    conference: buildGetEntityFunction<Conference>(ConferenceShape, 'conferences')
+    conference: buildGetEntityFunction<Conference>(ConferenceShape, 'conferences'),
+    venue: buildGetEntityFunction<Venue>(VenueShape, 'venues')
 }
 
 export default NhlApiWrapper;

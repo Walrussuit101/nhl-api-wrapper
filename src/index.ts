@@ -1,11 +1,7 @@
 import NhlApiWrapper from './NhlApiWrapper'
 import ApiBaseUrl from './ApiBaseUrl';
 
-NhlApiWrapper.conference({
-    where: {
-        name: "Eastern"
-    }
-}).then(data => {
+NhlApiWrapper.conference().then(data => {
     console.log(data);
 }).catch(e => {
     console.log(e);
@@ -19,6 +15,14 @@ NhlApiWrapper.franchise({
     console.log(data);
 }).catch(e => {
     console.log(e);
+})
+
+NhlApiWrapper.venue({
+    where: {
+        id: 5064
+    }
+}).then(data => {
+    console.log(data);
 })
 
 export { ApiBaseUrl };
