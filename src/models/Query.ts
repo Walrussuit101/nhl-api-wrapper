@@ -10,21 +10,17 @@ export const doQuery = <T> (params: QueryParams<T>, data: T[]): T[] => {
         // TODO: check keys/values length are divisble by 2 / same length
         // (to ensure every key has a value)
         
-        // TODO: handle complex where objects:
-        // ex:
-        // where {
-        //     franchise: {
-        //          id: 1
-        //     } 
-        // }
-
         const keys = Object.keys(params.where);
         const values = Object.values(params.where);
         const filteredData: T[] = [];
 
         keys.forEach((key, i) => {
             data.forEach(record => {
-                if (record[key] === values[i]) {
+                // compare JSON strings to allow nested object comparison
+                const recordString = JSON.stringify(record[key]);
+                const valueString  = JSON.stringify(values[i]).slice(1, -1); // remove top level {} for comparison
+
+                if (recordString.includes(valueString)) {
                     filteredData.push(record);
                 }
             });
