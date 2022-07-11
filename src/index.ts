@@ -1,33 +1,26 @@
 import NhlApiWrapper from './NhlApiWrapper'
 import ApiBaseUrl from './ApiBaseUrl';
 
-NhlApiWrapper.conference().then(data => {
-    console.log(data);
-}).catch(e => {
-    console.log(e);
-})
+(async () => {
+    try {
+        const conferences = await NhlApiWrapper.conference();
+        const penguins = await NhlApiWrapper.franchise({
+            where: {
+                teamName: "Penguins"
+            }
+        });
+        const ballArena = await NhlApiWrapper.venue({
+            where: {
+                id: 5064
+            }
+        });
+        const divisions = await NhlApiWrapper.division();
 
-NhlApiWrapper.franchise({
-    where: {
-        teamName: "Penguins"
+        console.log(conferences, penguins, ballArena, divisions);
+    } catch(e) {
+        console.error(e);
     }
-}).then(data => {
-    console.log(data);
-}).catch(e => {
-    console.log(e);
-})
-
-NhlApiWrapper.venue({
-    where: {
-        id: 5064
-    }
-}).then(data => {
-    console.log(data);
-})
-
-NhlApiWrapper.division().then(data => {
-    console.log(data);
-})
+})();
 
 export { ApiBaseUrl };
 export default NhlApiWrapper;
