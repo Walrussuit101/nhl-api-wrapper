@@ -9,9 +9,9 @@ import ApiBaseUrl from './ApiBaseUrl';
 const buildGetEntityFunction = <T> (validator: ZodType, urlEntityName: string) => {
     return async <K extends T> (queryParams?: QueryParams<K>): Promise<K[] | K> => {
         const res = await axios.get(ApiBaseUrl+urlEntityName);
-        const entities = res.data[urlEntityName].map((franchise: any) => {
-            return validator.parse(franchise);
-        }) 
+        const entities = res.data[urlEntityName].map((entity: any) => {
+            return validator.parse(entity);
+        });
 
         if (queryParams && entities.length > 0) {
             return doQuery<K>(queryParams, entities);
