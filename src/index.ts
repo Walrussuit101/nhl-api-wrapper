@@ -25,5 +25,9 @@ NhlApiWrapper.venue({
     console.log(data);
 })
 
+NhlApiWrapper.division().then(data => {
+    console.log(data);
+})
+
 export { ApiBaseUrl };
 export default NhlApiWrapper;
