@@ -9,6 +9,7 @@ import { Conference, ConferenceShape } from './models/Conference';
 import { Venue, VenueShape } from './models/Venue';
 import { Division, DivisionShape } from './models/Division';
 import { Season, SeasonShape } from './models/Season';
+import { Team, TeamShape } from './models/Team';
 
 const buildGetEntityFunction = <T> (validator: ZodType, urlEntityName: string) => {
     return async <K extends T> (queryParams?: QueryParams<K>): Promise<T[]> => {
@@ -30,7 +31,8 @@ const NhlApiWrapper = {
     conference: buildGetEntityFunction<Conference>(ConferenceShape, 'conferences'),
     venue: buildGetEntityFunction<Venue>(VenueShape, 'venues'),
     division: buildGetEntityFunction<Division>(DivisionShape, 'divisions'),
-    season: buildGetEntityFunction<Season>(SeasonShape, 'seasons')
+    season: buildGetEntityFunction<Season>(SeasonShape, 'seasons'),
+    team: buildGetEntityFunction<Team>(TeamShape, 'teams')
 }
 
 export default NhlApiWrapper;

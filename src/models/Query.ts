@@ -9,6 +9,14 @@ export const doQuery = <T> (params: QueryParams<T>, data: T[]): T[] => {
     if (params.where) {
         // TODO: check keys/values length are divisble by 2 / same length
         // (to ensure every key has a value)
+        
+        // TODO: handle complex where objects:
+        // ex:
+        // where {
+        //     franchise: {
+        //          id: 1
+        //     } 
+        // }
 
         const keys = Object.keys(params.where);
         const values = Object.values(params.where);

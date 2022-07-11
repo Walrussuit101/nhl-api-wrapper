@@ -3,7 +3,8 @@ import ApiBaseUrl from './ApiBaseUrl';
 
 (async () => {
     try {
-        const penguins = await NhlApiWrapper.franchise({
+        
+        const penguinsFranchise = await NhlApiWrapper.franchise({
             where: {
                 teamName: "Penguins"
             }
@@ -11,11 +12,19 @@ import ApiBaseUrl from './ApiBaseUrl';
         
         const penguinsFirstSeason = await NhlApiWrapper.season({
             where: {
-                seasonId: penguins[0].firstSeasonId.toString()
+                seasonId: penguinsFranchise[0].firstSeasonId.toString()
             }
         });
 
-        console.log(penguins, penguinsFirstSeason);
+        console.log(penguinsFranchise, penguinsFirstSeason);
+        
+        const penguinsTeam = await NhlApiWrapper.team({
+            where: {
+                name: "Pittsburgh Penguins"
+            }
+        });
+
+        console.log(penguinsTeam);
     } catch(e) {
         console.error(e);
     }
