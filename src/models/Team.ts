@@ -42,3 +42,25 @@ export const TeamShape = z.object({
 });
 
 export type Team = z.infer<typeof TeamShape>;
+
+export const TeamWithRosterShape = TeamShape.extend({
+    roster: z.object({
+        roster: z.object({
+            person: z.object({
+                id: z.number(),
+                fullName: z.string(),
+                link: z.string()
+            }),
+            jerseyNumber: z.optional(z.string()),
+            position: z.object({
+                code: z.string(),
+                name: z.string(),
+                type: z.string(),
+                abbreviation: z.string()
+            })
+        }).array(),
+        link: z.string()
+    })
+});
+
+export type TeamWithRoster = z.infer<typeof TeamWithRosterShape>;

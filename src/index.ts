@@ -3,20 +3,6 @@ import ApiBaseUrl from './ApiBaseUrl';
 
 (async () => {
     try {
-        const penguinsFranchise = await NhlApiWrapper.franchise({
-            where: {
-                teamName: "Penguins"
-            }
-        });
-
-        const penguinsFirstSeason = await NhlApiWrapper.season({
-            where: {
-                seasonId: penguinsFranchise[0].firstSeasonId.toString()
-            }
-        });
-
-        console.log(penguinsFranchise, penguinsFirstSeason);
-
         const metroTeams = await NhlApiWrapper.team({
             where: {
                 division: {
@@ -26,6 +12,16 @@ import ApiBaseUrl from './ApiBaseUrl';
         });
 
         console.log(metroTeams);
+
+        const pensWithRoster = await NhlApiWrapper.teamWithRoster({
+            where: {
+                teamName: "Penguins"
+            }
+        });
+
+        console.log(pensWithRoster[0].roster.roster.filter(player => {
+            return player.person.fullName === 'Sidney Crosby'
+        }));
     } catch(e) {
         console.error(e);
     }

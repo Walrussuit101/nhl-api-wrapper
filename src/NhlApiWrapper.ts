@@ -9,11 +9,13 @@ import { Conference, ConferenceShape } from './models/Conference';
 import { Venue, VenueShape } from './models/Venue';
 import { Division, DivisionShape } from './models/Division';
 import { Season, SeasonShape } from './models/Season';
-import { Team, TeamShape } from './models/Team';
+import { Team, TeamShape, TeamWithRoster, TeamWithRosterShape } from './models/Team';
 
-const buildGetEntityFunction = <T> (validator: ZodType, urlEntityName: string) => {
+const buildGetEntityFunction = <T> (validator: ZodType, urlEntityName: string, expandParam?: string) => {
     return async <K extends T> (queryParams?: QueryParams<K>): Promise<T[]> => {
-        const res = await axios.get(ApiBaseUrl+urlEntityName);
+        const url = (expandParam) ? ApiBaseUrl+urlEntityName+expandParam : ApiBaseUrl+urlEntityName;
+
+        const res = await axios.get(url);
         const entities: K[] = res.data[urlEntityName].map((entity: any) => {
             return validator.parse(entity);
         });
@@ -32,7 +34,8 @@ const NhlApiWrapper = {
     venue: buildGetEntityFunction<Venue>(VenueShape, 'venues'),
     division: buildGetEntityFunction<Division>(DivisionShape, 'divisions'),
     season: buildGetEntityFunction<Season>(SeasonShape, 'seasons'),
-    team: buildGetEntityFunction<Team>(TeamShape, 'teams')
+    team: buildGetEntityFunction<Team>(TeamShape, 'teams'),
+    teamWithRoster: buildGetEntityFunction<TeamWithRoster>(TeamWithRosterShape, 'teams', '?expand=team.roster')
 }
 
 export default NhlApiWrapper;
