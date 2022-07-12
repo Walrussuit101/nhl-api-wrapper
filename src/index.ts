@@ -1,3 +1,10 @@
+import { Franchise } from './models/Franchise';
+import { Conference } from './models/Conference';
+import { Venue } from './models/Venue';
+import { Division } from './models/Division';
+import { Season } from './models/Season';
+import { Team, TeamWithRoster} from './models/Team';
+
 import NhlApiWrapper from './NhlApiWrapper'
 import ApiBaseUrl from './ApiBaseUrl';
 
@@ -27,5 +34,5 @@ import ApiBaseUrl from './ApiBaseUrl';
     }
 })();
 
-export { ApiBaseUrl };
+export { ApiBaseUrl, Franchise, Conference, Venue, Division, Season, Team, TeamWithRoster};
 export default NhlApiWrapper;
