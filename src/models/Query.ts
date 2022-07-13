@@ -14,11 +14,12 @@ export const doQuery = <T> (params: QueryParams<T>, data: T[]): T[] => {
         const values = Object.values(params.where);
         const filteredData: T[] = [];
 
+        // compare JSON strings to allow nested object comparison
         keys.forEach((key, i) => {
+            const valueString  = JSON.stringify(values[i]).slice(1, -1); // remove top level {} for comparison
+
             data.forEach(record => {
-                // compare JSON strings to allow nested object comparison
                 const recordString = JSON.stringify(record[key]);
-                const valueString  = JSON.stringify(values[i]).slice(1, -1); // remove top level {} for comparison
 
                 if (recordString.includes(valueString)) {
                     filteredData.push(record);
