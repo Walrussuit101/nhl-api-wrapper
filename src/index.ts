@@ -4,22 +4,13 @@ import { Venue } from './models/Venue';
 import { Division } from './models/Division';
 import { Season } from './models/Season';
 import { Team, TeamWithRoster} from './models/Team';
+import { Person, PersonShape } from './models/Person';
 
 import NhlApiWrapper from './NhlApiWrapper'
 import ApiBaseUrl from './ApiBaseUrl';
 
 (async () => {
     try {
-        const metroTeams = await NhlApiWrapper.team({
-            where: {
-                division: {
-                    name: "Metropolitan"
-                }
-            }
-        });
-
-        console.log(metroTeams);
-
         const pensWithRoster = await NhlApiWrapper.teamWithRoster({
             where: {
                 teamName: "Penguins"
@@ -34,5 +25,5 @@ import ApiBaseUrl from './ApiBaseUrl';
     }
 })();
 
-export { ApiBaseUrl, Franchise, Conference, Venue, Division, Season, Team, TeamWithRoster};
+export { ApiBaseUrl, Franchise, Conference, Venue, Division, Season, Team, TeamWithRoster, Person};
 export default NhlApiWrapper;

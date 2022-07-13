@@ -10,6 +10,7 @@ import { Venue, VenueShape } from './models/Venue';
 import { Division, DivisionShape } from './models/Division';
 import { Season, SeasonShape } from './models/Season';
 import { Team, TeamShape, TeamWithRoster, TeamWithRosterShape } from './models/Team';
+import { Person, PersonShape } from './models/Person';
 
 const buildGetEntityFunction = <T> (validator: ZodType, urlEntityName: string, expandParam?: string) => {
     return async <K extends T> (queryParams?: QueryParams<K>): Promise<T[]> => {
@@ -36,6 +37,8 @@ const NhlApiWrapper = {
     season: buildGetEntityFunction<Season>(SeasonShape, 'seasons'),
     team: buildGetEntityFunction<Team>(TeamShape, 'teams'),
     teamWithRoster: buildGetEntityFunction<TeamWithRoster>(TeamWithRosterShape, 'teams', '?expand=team.roster')
+    // TODO: figure out how to do /people/{id} route (id is required cannot GET just /people)
+    // person: buildGetEntityFunction<Person>(PersonShape, 'people')
 }
 
 export default NhlApiWrapper;
