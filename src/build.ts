@@ -4,7 +4,7 @@ import path from 'path';
 const originalPkgPath = path.join(__dirname, '..', 'package.json');
 const originalReadMePath = path.join(__dirname, '..', 'README.md');
 
-const buildPath = path.join(__dirname, '..', 'dist');
+const buildPath = path.join(__dirname, '..', 'build');
 const buildPkgPath = path.join(buildPath, 'package.json');
 const buildReadMePath = path.join(buildPath, 'README.md');
 
@@ -13,7 +13,7 @@ const main = () => {
     const originalPkgObj = JSON.parse(originalPkgString);
 
     // update pkg obj
-    originalPkgObj.main = 'src/index.js';
+    originalPkgObj.main = 'index.js';
     delete originalPkgObj.devDependencies;
     delete originalPkgObj.scripts;
     originalPkgObj.types = 'index.d.ts';

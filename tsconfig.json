@@ -2,11 +2,11 @@
     "compilerOptions": {
         "lib": ["ESNext"],
         "esModuleInterop": true,
-        "outDir": "./dist",
+        "outDir": "./build",
         "declaration": true
     },
     "exclude": [
-        "./dist",
+        "./build",
         "./src/build.ts"
     ]
 }
