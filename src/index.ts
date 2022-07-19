@@ -20,6 +20,18 @@ import ApiBaseUrl from './ApiBaseUrl';
         console.log(pensWithRoster[0].roster.roster.filter(player => {
             return player.person.fullName === 'Sidney Crosby'
         }));
+
+        const metroTeams = await NhlApiWrapper.team({
+            where: {
+                division: {
+                    nameShort: 'Metro'
+                }
+            }
+        })
+
+        console.log(metroTeams[0])
+
+        console.log(metroTeams.length);
     } catch(e) {
         console.error(e);
     }
