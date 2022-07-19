@@ -4,7 +4,7 @@ import { Venue } from './models/Venue';
 import { Division } from './models/Division';
 import { Season } from './models/Season';
 import { Team, TeamWithRoster} from './models/Team';
-import { Person, PersonShape } from './models/Person';
+import { Person } from './models/Person';
 
 import NhlApiWrapper from './NhlApiWrapper'
 import ApiBaseUrl from './ApiBaseUrl';
@@ -13,25 +13,17 @@ import ApiBaseUrl from './ApiBaseUrl';
     try {
         const pensWithRoster = await NhlApiWrapper.teamWithRoster({
             where: {
-                teamName: "Penguins"
+                name: "Penguins"
             }
         });
 
-        console.log(pensWithRoster[0].roster.roster.filter(player => {
-            return player.person.fullName === 'Sidney Crosby'
-        }));
+        const sid = pensWithRoster[0].roster.roster.find(player => {
+            return player.person.fullName === 'Sidney Crosby';
+        });
+        console.log(sid);
 
-        const metroTeams = await NhlApiWrapper.team({
-            where: {
-                division: {
-                    nameShort: 'Metro'
-                }
-            }
-        })
-
-        console.log(metroTeams[0])
-
-        console.log(metroTeams.length);
+        const sidFullProfile = await NhlApiWrapper.person(sid.person.id);
+        console.log(sidFullProfile);
     } catch(e) {
         console.error(e);
     }

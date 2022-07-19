@@ -12,6 +12,12 @@ import { Season, SeasonShape } from './models/Season';
 import { Team, TeamShape, TeamWithRoster, TeamWithRosterShape } from './models/Team';
 import { Person, PersonShape } from './models/Person';
 
+// Can be used for entities that don't require any route params
+// ex: API_URL/teams
+//     API_URL/divisions
+//
+// If an entity requires a route param, this cannot be used
+// ex: API_URL/people/{id}
 const buildGetEntityFunction = <T> (validator: ZodType, urlEntityName: string, expandParam?: string) => {
     return async <K extends T> (queryParams?: QueryParams<K>): Promise<T[]> => {
         const url = (expandParam) ? ApiBaseUrl+urlEntityName+expandParam : ApiBaseUrl+urlEntityName;
@@ -36,9 +42,15 @@ const NhlApiWrapper = {
     division: buildGetEntityFunction<Division>(DivisionShape, 'divisions'),
     season: buildGetEntityFunction<Season>(SeasonShape, 'seasons'),
     team: buildGetEntityFunction<Team>(TeamShape, 'teams'),
-    teamWithRoster: buildGetEntityFunction<TeamWithRoster>(TeamWithRosterShape, 'teams', '?expand=team.roster')
-    // TODO: figure out how to do /people/{id} route (id is required cannot GET just /people)
-    // person: buildGetEntityFunction<Person>(PersonShape, 'people')
+    teamWithRoster: buildGetEntityFunction<TeamWithRoster>(TeamWithRosterShape, 'teams', '?expand=team.roster'),
+    person: async (id: number): Promise<Person[]> => {
+        const url = `${ApiBaseUrl}people/${id}`;
+        const res = await axios.get(url);
+        const person = res.data['people'].map((person: any) => {
+            return PersonShape.parse(person);
+        });
+        return person;
+    }
 }
 
 export default NhlApiWrapper;
