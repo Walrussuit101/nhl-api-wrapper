@@ -10,7 +10,7 @@ All of the information (routes, query params, etc.) regarding the API I obtained
 
 ## Usage
 
-### All of a certain entity
+### All of an entity
 All divisions
 
 ```typescript
@@ -22,7 +22,7 @@ console.log(divisions);
 All teams in the metropolitan division
 
 ```typescript
-const metroTeams = await NhlApiWrapper.teams({
+const metroTeams = await NhlApiWrapper.team({
     where: {
         division: {
             nameShort: 'Metro'
