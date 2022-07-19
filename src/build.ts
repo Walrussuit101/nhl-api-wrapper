@@ -16,6 +16,7 @@ const main = () => {
     originalPkgObj.main = 'src/index.js';
     delete originalPkgObj.devDependencies;
     delete originalPkgObj.scripts;
+    originalPkgObj.types = 'index.d.ts';
 
     // write out new pkg file and README
     writeFileSync(buildPkgPath, JSON.stringify(originalPkgObj, null, 2));

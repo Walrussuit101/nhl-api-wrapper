@@ -13,8 +13,7 @@
   "license": "MIT",
   "scripts": {
     "start": "ts-node src/index.ts",
-    "build": "tsc && ts-node src/build.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc && ts-node src/build.ts"
   },
   "dependencies": {
     "axios": "^0.27.2",
