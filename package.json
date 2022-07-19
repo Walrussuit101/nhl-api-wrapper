@@ -10,10 +10,10 @@
   },
   "description": "",
   "keywords": [],
-  "license": "ISC",
+  "license": "MIT",
   "scripts": {
     "start": "ts-node src/index.ts",
-    "build": "tsc",
+    "build": "tsc && ts-node src/build.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
