@@ -11,15 +11,15 @@ All of the information (routes, query params, etc.) regarding the API I obtained
 ## Usage
 
 ### All of an entity
-All divisions:
 
+All divisions:
 ```typescript
 const divisions = await NhlApiWrapper.division();
 console.log(divisions);
 ```
 
 Result:
-```json
+```
 [
   {
     id: 17,
@@ -57,8 +57,8 @@ Result:
 ```
 
 ### Filtering
-All teams in the metropolitan division
 
+All teams in the metropolitan division:
 ```typescript
 const metroTeams = await NhlApiWrapper.team({
     where: {
@@ -68,6 +68,77 @@ const metroTeams = await NhlApiWrapper.team({
     }
 });
 console.log(metroTeams)
+```
+
+Result:
+```
+[
+  {
+    id: 1,
+    name: 'New Jersey Devils',
+    link: '/api/v1/teams/1',
+    venue: {
+      name: 'Prudential Center',
+      link: '/api/v1/venues/null',
+      city: 'Newark',
+      timeZone: [Object]
+    },
+    abbreviation: 'NJD',
+    teamName: 'Devils',
+    locationName: 'New Jersey',
+    firstYearOfPlay: '1982',
+    division: {
+      id: 18,
+      name: 'Metropolitan',
+      nameShort: 'Metro',
+      link: '/api/v1/divisions/18',
+      abbreviation: 'M'
+    },
+    conference: { id: 6, name: 'Eastern', link: '/api/v1/conferences/6' },
+    franchise: {
+      franchiseId: 23,
+      teamName: 'Devils',
+      link: '/api/v1/franchises/23'
+    },
+    shortName: 'New Jersey',
+    officialSiteUrl: 'http://www.newjerseydevils.com/',
+    franchiseId: 23,
+    active: true
+  },
+  {
+    id: 2,
+    name: 'New York Islanders',
+    link: '/api/v1/teams/2',
+    venue: {
+      name: 'UBS Arena',
+      link: '/api/v1/venues/null',
+      city: 'Elmont',
+      timeZone: [Object]
+    },
+    abbreviation: 'NYI',
+    teamName: 'Islanders',
+    locationName: 'New York',
+    firstYearOfPlay: '1972',
+    division: {
+      id: 18,
+      name: 'Metropolitan',
+      nameShort: 'Metro',
+      link: '/api/v1/divisions/18',
+      abbreviation: 'M'
+    },
+    conference: { id: 6, name: 'Eastern', link: '/api/v1/conferences/6' },
+    franchise: {
+      franchiseId: 22,
+      teamName: 'Islanders',
+      link: '/api/v1/franchises/22'
+    },
+    shortName: 'NY Islanders',
+    officialSiteUrl: 'http://www.newyorkislanders.com/',
+    franchiseId: 22,
+    active: true
+  }, 
+  ...
+]
 ```
 
 ### Types
