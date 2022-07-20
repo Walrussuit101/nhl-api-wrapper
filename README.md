@@ -41,3 +41,6 @@ import { Team, Division, Season } from 'nhl-api-wrapper';
 
 ## Validation
 `nhl-api-wrapper` uses [zod](https://github.com/colinhacks/zod) to verify the data's shape that is returned from the API. If you get a zod parsing error when using please log an issue here, as the API could've changed or updated.
+
+## Contributing/Dev Setup
+The package is already setup to use [bun](https://github.com/oven-sh/bun) as an npm client, but npm can be used as well.
