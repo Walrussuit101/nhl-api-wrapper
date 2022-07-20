@@ -153,6 +153,20 @@ All entity types are exported for usage
 import { Team, Division, Season } from 'nhl-api-wrapper';
 ```
 
+## Entity support
+Below are the entities the package currently has support for
+
+| Entity      | API Link               | Defined Shape |
+| ----------- | ---------------------- | --------- |
+| Conference  | /api/v1/conferences    | [Conference.ts](https://github.com/Walrussuit101/nhl-api-wrapper/blob/master/src/models/Conference.ts) |
+| Division    | /api/v1/divisions      | [Division.ts](https://github.com/Walrussuit101/nhl-api-wrapper/blob/master/src/models/Division.ts) |
+| Franchise   | /api/v1/franchises     | [Franchise.ts](https://github.com/Walrussuit101/nhl-api-wrapper/blob/master/src/models/Franchise.ts)
+| Person      | /api/v1/people/{id}    | [Person.ts](https://github.com/Walrussuit101/nhl-api-wrapper/blob/master/src/models/Person.ts)
+| Season      | /api/v1/seasons        | [Season.ts](https://github.com/Walrussuit101/nhl-api-wrapper/blob/master/src/models/Season.ts)
+| Team        | /api/v1/teams          | [Team.ts](https://github.com/Walrussuit101/nhl-api-wrapper/blob/master/src/models/Team.ts)
+| Venue       | /api/v1/venues         | [Venue.ts](https://github.com/Walrussuit101/nhl-api-wrapper/blob/master/src/models/Venue.ts)
+
+
 ## Validation
 `nhl-api-wrapper` uses [zod](https://github.com/colinhacks/zod) to verify the data's shape that is returned from the API. If you get a zod parsing error when using please log an issue here, as the API could've changed or updated.
 
