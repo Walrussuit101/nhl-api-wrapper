@@ -1,16 +1,28 @@
 {
   "name": "nhl-api-wrapper",
   "version": "1.0.0",
-  "author": "",
   "main": "src/index.ts",
   "devDependencies": {
     "@types/node": "^18.0.3",
     "ts-node": "^10.8.2",
     "typescript": "^4.7.4"
   },
-  "description": "",
-  "keywords": [],
+  "description": "Wrapper for the public NHL API",
+  "keywords": [
+    "api",
+    "wrapper",
+    "nhl",
+    "hockey"
+  ],
   "license": "MIT",
+  "homepage": "https://github.com/Walrussuit101/nhl-api-wrapper#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Walrussuit101/nhl-api-wrapper.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Walrussuit101/nhl-api-wrapper/issues"
+  },
   "scripts": {
     "start": "ts-node src/index.ts",
     "build": "tsc && ts-node src/build.ts"
