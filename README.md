@@ -11,11 +11,49 @@ All of the information (routes, query params, etc.) regarding the API I obtained
 ## Usage
 
 ### All of an entity
-All divisions
+All divisions:
 
 ```typescript
 const divisions = await NhlApiWrapper.division();
 console.log(divisions);
+```
+
+Result:
+```json
+[
+  {
+    id: 17,
+    name: 'Atlantic',
+    link: '/api/v1/divisions/17',
+    abbreviation: 'A',
+    conference: { id: 6, name: 'Eastern', link: '/api/v1/conferences/6' },
+    active: true
+  },
+  {
+    id: 16,
+    name: 'Central',
+    link: '/api/v1/divisions/16',
+    abbreviation: 'C',
+    conference: { id: 5, name: 'Western', link: '/api/v1/conferences/5' },
+    active: true
+  },
+  {
+    id: 18,
+    name: 'Metropolitan',
+    link: '/api/v1/divisions/18',
+    abbreviation: 'M',
+    conference: { id: 6, name: 'Eastern', link: '/api/v1/conferences/6' },
+    active: true
+  },
+  {
+    id: 15,
+    name: 'Pacific',
+    link: '/api/v1/divisions/15',
+    abbreviation: 'P',
+    conference: { id: 5, name: 'Western', link: '/api/v1/conferences/5' },
+    active: true
+  }
+]
 ```
 
 ### Filtering
