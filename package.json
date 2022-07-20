@@ -1,6 +1,6 @@
 {
   "name": "nhl-api-wrapper",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "main": "src/index.ts",
   "devDependencies": {
     "@types/node": "^18.0.3",
