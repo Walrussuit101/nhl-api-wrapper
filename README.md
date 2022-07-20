@@ -153,6 +153,13 @@ All entity types are exported for usage
 import { Team, Division, Season } from 'nhl-api-wrapper';
 ```
 
+### API Base URL
+The APIs base path is also exported for usage
+
+```typescript
+import { ApiBaseUrl } from 'nhl-api-wrapper';
+```
+
 ## Entity support
 Below are the entities the package currently has support for
 
