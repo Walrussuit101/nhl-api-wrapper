@@ -10,6 +10,11 @@ All of the information (routes, query params, etc.) regarding the API I obtained
 
 ## Usage
 
+### Importing
+```typescript
+import NhlApiWrapper from 'nhl-api-wrapper';
+```
+
 ### All of an entity
 
 All divisions:
