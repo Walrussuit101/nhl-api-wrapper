@@ -1,4 +1,5 @@
 # nhl-api-wrapper
+[![npm version](https://badge.fury.io/js/nhl-api-wrapper.svg)](https://www.npmjs.com/package/nhl-api-wrapper)
 
 ## Installation
 ```bash
