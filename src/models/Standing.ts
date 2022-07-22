@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
 export const StandingShape = z.object({
-    standingType: z.string(),
+    standingsType: z.string(),
     league: z.object({
         id: z.number(),
         name: z.string(),
@@ -43,7 +43,7 @@ export const StandingShape = z.object({
         conferenceL10Rank: z.string(),
         conferenceRoadRank: z.string(),
         conferenceHomeRank: z.string(),
-        leaugeRank: z.string(),
+        leagueRank: z.string(),
         leagueL10Rank: z.string(),
         leagueRoadRank: z.string(),
         leagueHomeRank: z.string(),
@@ -55,7 +55,7 @@ export const StandingShape = z.object({
             streakNumber: z.number(),
             streakCode: z.string()
         }),
-        clinchIndicator: z.string(),
+        clinchIndicator: z.optional(z.string()),
         pointsPercentage: z.number(),
         ppDivisionRank: z.string(),
         ppConferenceRank: z.string(),
