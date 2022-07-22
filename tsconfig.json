@@ -2,9 +2,8 @@
     "compilerOptions": {
         "lib": ["ESNext"],
         "esModuleInterop": true,
-        "outDir": "./build",
-        "declaration": true,
-        "removeComments": true
+        "removeComments": true,
+        "rootDir": "./src"
     },
     "exclude": [
         "./build",

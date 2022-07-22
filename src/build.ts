@@ -1,4 +1,6 @@
 import { readFileSync, writeFileSync, copyFileSync } from 'fs';
+import { Generator } from 'npm-dts';
+import { build } from 'esbuild';
 import path from 'path';
 
 const originalPkgPath = path.join(__dirname, '..', 'package.json');
@@ -10,11 +12,27 @@ const buildPkgPath = path.join(buildPath, 'package.json');
 const buildReadMePath = path.join(buildPath, 'README.md');
 const buildLicensePath = path.join(buildPath, 'LICENSE');
 
-const main = () => {
+const main = async () => {
+    // compile ts to single js file
+    await build({
+        platform: 'node',
+        entryPoints: ['src/index.ts'],
+        outfile: 'build/index.js',
+        bundle: true,
+        external: ['axios', 'zod']
+    });
+
+    // generate single types declaration file
+    const types = new Generator({
+        entry: 'index.ts', // relative to 'rootDir' in tsconfig
+        output: 'build/index.d.ts'
+    });
+    await types.generate();
+
+    // update pkg obj
     const originalPkgString = readFileSync(originalPkgPath).toString('utf8');
     const originalPkgObj = JSON.parse(originalPkgString);
 
-    // update pkg obj
     originalPkgObj.main = 'index.js';
     delete originalPkgObj.devDependencies;
     delete originalPkgObj.scripts;
