@@ -15,6 +15,7 @@ const buildLicensePath = path.join(buildPath, 'LICENSE');
 const main = async () => {
     // compile ts to single js file
     await build({
+        platform: 'node',
         entryPoints: ['src/index.ts'],
         outdir: 'build',
         bundle: true,
