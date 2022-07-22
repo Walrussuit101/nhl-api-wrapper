@@ -1,7 +1,7 @@
 import { readFileSync, writeFileSync, copyFileSync } from 'fs';
-import path from 'path';
-import { build } from 'esbuild';
 import { Generator } from 'npm-dts';
+import { build } from 'esbuild';
+import path from 'path';
 
 const originalPkgPath = path.join(__dirname, '..', 'package.json');
 const originalReadMePath = path.join(__dirname, '..', 'README.md');
@@ -22,9 +22,9 @@ const main = async () => {
         external: ['axios', 'zod']
     });
 
-    // generate single types declartion file
+    // generate single types declaration file
     const types = new Generator({
-        entry: 'index.ts',
+        entry: 'index.ts', // relative to 'rootDir' in tsconfig
         output: 'build/index.d.ts'
     });
     await types.generate();
