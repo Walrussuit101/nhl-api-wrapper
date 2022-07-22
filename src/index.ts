@@ -6,8 +6,9 @@ import { Season } from './models/Season';
 import { Team, TeamWithRoster} from './models/Team';
 import { Person } from './models/Person';
 import { Standing } from './models/Standing';
+import { Award } from './models/Award';
 import NhlApiWrapper from './NhlApiWrapper'
 import ApiBaseUrl from './ApiBaseUrl';
 
-export { ApiBaseUrl, Franchise, Conference, Venue, Division, Season, Team, TeamWithRoster, Person, Standing};
+export { ApiBaseUrl, Franchise, Conference, Venue, Division, Season, Team, TeamWithRoster, Person, Standing, Award };
 export default NhlApiWrapper;

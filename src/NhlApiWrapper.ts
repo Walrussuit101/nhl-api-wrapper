@@ -12,6 +12,7 @@ import { Season, SeasonShape } from './models/Season';
 import { Team, TeamShape, TeamWithRoster, TeamWithRosterShape } from './models/Team';
 import { Person, PersonShape } from './models/Person';
 import { Standing, StandingShape } from './models/Standing';
+import { Award, AwardShape } from './models/Award';
 
 // Can be used for entities that don't require any route params
 // ex: API_URL/teams
@@ -45,6 +46,7 @@ const NhlApiWrapper = {
     team: buildGetEntityFunction<Team>(TeamShape, 'teams', 'teams'),
     teamWithRoster: buildGetEntityFunction<TeamWithRoster>(TeamWithRosterShape, 'teams',  'teams', '?expand=team.roster'),
     standing: buildGetEntityFunction<Standing>(StandingShape, 'standings', 'records'),
+    award: buildGetEntityFunction<Award>(AwardShape, 'awards', 'awards'),
     person: async (id: number): Promise<Person[]> => {
         const url = `${ApiBaseUrl}people/${id}`;
         const res = await axios.get(url);
