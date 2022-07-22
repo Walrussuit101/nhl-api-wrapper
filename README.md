@@ -173,6 +173,7 @@ Below are the entities the package currently has support for
 | Season      | /api/v1/seasons        | [Season.ts](https://github.com/Walrussuit101/nhl-api-wrapper/blob/master/src/models/Season.ts)
 | Team        | /api/v1/teams          | [Team.ts](https://github.com/Walrussuit101/nhl-api-wrapper/blob/master/src/models/Team.ts)
 | Venue       | /api/v1/venues         | [Venue.ts](https://github.com/Walrussuit101/nhl-api-wrapper/blob/master/src/models/Venue.ts)
+| Standing    | /api/v1/standings      | [Standing.ts](https://github.com/Walrussuit101/nhl-api-wrapper/blob/master/src/models/Standing.ts)
 
 
 ## Validation

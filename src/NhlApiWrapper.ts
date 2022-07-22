@@ -11,6 +11,7 @@ import { Division, DivisionShape } from './models/Division';
 import { Season, SeasonShape } from './models/Season';
 import { Team, TeamShape, TeamWithRoster, TeamWithRosterShape } from './models/Team';
 import { Person, PersonShape } from './models/Person';
+import { Standing, StandingShape } from './models/Standing';
 
 // Can be used for entities that don't require any route params
 // ex: API_URL/teams
@@ -18,12 +19,12 @@ import { Person, PersonShape } from './models/Person';
 //
 // If an entity requires a route param, this cannot be used
 // ex: API_URL/people/{id}
-const buildGetEntityFunction = <T> (validator: ZodType, urlEntityName: string, expandParam?: string) => {
+const buildGetEntityFunction = <T> (validator: ZodType, urlEntityName: string, resultName: string, expandParam?: string) => {
     return async <K extends T> (queryParams?: QueryParams<K>): Promise<T[]> => {
         const url = (expandParam) ? ApiBaseUrl+urlEntityName+expandParam : ApiBaseUrl+urlEntityName;
 
         const res = await axios.get(url);
-        const entities: K[] = res.data[urlEntityName].map((entity: any) => {
+        const entities: K[] = res.data[resultName].map((entity: any) => {
             return validator.parse(entity);
         });
 
@@ -36,13 +37,14 @@ const buildGetEntityFunction = <T> (validator: ZodType, urlEntityName: string, e
 }
 
 const NhlApiWrapper = {
-    franchise: buildGetEntityFunction<Franchise>(FranchiseShape, 'franchises'),
-    conference: buildGetEntityFunction<Conference>(ConferenceShape, 'conferences'),
-    venue: buildGetEntityFunction<Venue>(VenueShape, 'venues'),
-    division: buildGetEntityFunction<Division>(DivisionShape, 'divisions'),
-    season: buildGetEntityFunction<Season>(SeasonShape, 'seasons'),
-    team: buildGetEntityFunction<Team>(TeamShape, 'teams'),
-    teamWithRoster: buildGetEntityFunction<TeamWithRoster>(TeamWithRosterShape, 'teams', '?expand=team.roster'),
+    franchise: buildGetEntityFunction<Franchise>(FranchiseShape, 'franchises', 'franchises'),
+    conference: buildGetEntityFunction<Conference>(ConferenceShape, 'conferences', 'conferences'),
+    venue: buildGetEntityFunction<Venue>(VenueShape, 'venues', 'venues'),
+    division: buildGetEntityFunction<Division>(DivisionShape, 'divisions', 'divisions'),
+    season: buildGetEntityFunction<Season>(SeasonShape, 'seasons', 'seasons'),
+    team: buildGetEntityFunction<Team>(TeamShape, 'teams', 'teams'),
+    teamWithRoster: buildGetEntityFunction<TeamWithRoster>(TeamWithRosterShape, 'teams',  'teams', '?expand=team.roster'),
+    standing: buildGetEntityFunction<Standing>(StandingShape, 'standings', 'records'),
     person: async (id: number): Promise<Person[]> => {
         const url = `${ApiBaseUrl}people/${id}`;
         const res = await axios.get(url);
