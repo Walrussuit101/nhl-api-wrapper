@@ -17,7 +17,7 @@ const main = async () => {
     await build({
         platform: 'node',
         entryPoints: ['src/index.ts'],
-        outdir: 'build',
+        outfile: 'build/index.js',
         bundle: true,
         external: ['axios', 'zod']
     });
