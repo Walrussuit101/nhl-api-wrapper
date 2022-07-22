@@ -2,6 +2,7 @@
     "compilerOptions": {
         "lib": ["ESNext"],
         "esModuleInterop": true,
+        "resolveJsonModule": true,
         "outDir": "./build",
         "declaration": true,
         "removeComments": true
