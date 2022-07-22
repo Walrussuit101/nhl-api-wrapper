@@ -24,7 +24,7 @@ const main = async () => {
 
     // generate single types declartion file
     const types = new Generator({
-        entry: 'src/index.ts',
+        entry: 'index.ts',
         output: 'build/index.d.ts'
     });
     await types.generate();
